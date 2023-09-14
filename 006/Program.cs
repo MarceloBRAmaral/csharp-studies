@@ -1,19 +1,42 @@
 ﻿// Parsing numbers
 
+using System.Net.WebSockets;
+
 string[] NumStrs = {"  1 ", " 1.45  ", "-100", "5e+04 "};
 
 int testint;
 float testfloat;
 bool result;
 
-foreach(string str in NumStrs){
-    try{
-        testfloat = float.Parse(str);
-        Console.WriteLine($"Parsed {str} to float is {testfloat}");
-        testint = int.Parse(str);
-        Console.WriteLine($"Parsed {str} to int is {testint}");
-    }
-    catch(FormatException e){
-        Console.WriteLine($"Could not parse '{str}' : {e.Message}");
-    }
-}
+// The Parse method attempts to parse a string to a number and
+// throws an exception if the parse is unsuccessful
+// foreach(string str in NumStrs){
+//     try{
+//         testfloat = float.Parse(str);
+//         Console.WriteLine($"Parsed {str} to float is {testfloat}");
+//         testint = int.Parse(str);
+//         Console.WriteLine($"Parsed {str} to int is {testint}");
+//     }
+//     catch(FormatException e){
+//         Console.WriteLine($"Could not parse '{str}' : {e.Message}");
+//     }
+// }
+
+// The TryParse method returns 'true' if the parse is successful
+result = int.TryParse(NumStrs[0], out testint);
+Console.WriteLine($"{result} -- Parsing to int '{NumStrs[0]}' : {testint}");
+result = float.TryParse(NumStrs[0], out testfloat);
+Console.WriteLine($"{result} -- Parsing to float '{NumStrs[0]}' : {testfloat}");
+result = int.TryParse(NumStrs[1], out testint);
+Console.WriteLine($"{result} -- Parsing to int '{NumStrs[1]}' : {testint}");
+result = float.TryParse(NumStrs[1], out testfloat);
+Console.WriteLine($"{result} -- Parsing to float '{NumStrs[1]}' : {testfloat}");
+result = int.TryParse(NumStrs[2], out testint);
+Console.WriteLine($"{result} -- Parsing to int '{NumStrs[2]}' : {testint}");
+result = float.TryParse(NumStrs[2], out testfloat);
+Console.WriteLine($"{result} -- Parsing to float '{NumStrs[2]}' : {testfloat}");
+result = int.TryParse(NumStrs[3], out testint);
+Console.WriteLine($"{result} -- Parsing to int '{NumStrs[3]}' : {testint}");
+result = float.TryParse(NumStrs[3], out testfloat);
+Console.WriteLine($"{result} -- Parsing to float '{NumStrs[3]}' : {testfloat}");
+
